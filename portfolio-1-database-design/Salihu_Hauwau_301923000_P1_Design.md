@@ -134,7 +134,13 @@ Booking to Payment: a booking has zero or many payments (for example a
 
 &#x20;Staff accounts and invoices are outside the scope of this portfolio.
 
+ER Diagram
 
+[ER diagram of the Haske Hotel Reservation System](Salihu_Hauwau_301923000_P1_ER_Diagram.png)
+
+The diagram shows six tables. Booking_Room sits between Booking and Room
+because one booking can include several rooms, and one room is booked many
+times over the year.
 
 &#x20;AI Use Declaration
 
