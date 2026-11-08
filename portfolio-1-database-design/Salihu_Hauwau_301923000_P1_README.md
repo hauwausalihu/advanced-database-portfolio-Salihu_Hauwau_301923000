@@ -6,7 +6,7 @@
 
 
 
-\## Selected Case Study (Hotel Management System)
+\## Selected Case Study (Hotel Reservation System)
 
 
 
@@ -14,7 +14,7 @@
 
 
 
-\*\*Scenario:\*\* Haske Hotel is a hotel located in Minna, Niger State, Nigeria. It is an 83-room hotel. 
+\*\*Scenario:\*\* Haske Hotel is a hotel located in Minna, Niger State, Nigeria. It is an 83-room hotel.
 
 The database used would be supporting the hotel's reservation system, from taking room books to guest checking out of their booked rooms. Payments would also be recorded.
 
@@ -60,7 +60,31 @@ The database used would be supporting the hotel's reservation system, from takin
 
 
 
+Tools and Workflow
+
+
+
+\- I wrote and edited the project files (README, design document and
+
+&#x20; normalisation file) in Notepad, opened from Git Bash.
+
+\- I drew the ER diagram in draw.io and exported it as a PNG.
+
+\- I used Git Bash to save my work in steps (git add, git commit) and send it
+
+&#x20; to this GitHub repository (git push).
+
+\- Database: PostgreSQL.
+
+
+
+
+
 \*\*Note on data:\*\* All data used in this portfolio is simulated for
 
 academic purposes. It is not taken from the real Haske Hotel, Minna Niger State.
+
+
+
+
 
