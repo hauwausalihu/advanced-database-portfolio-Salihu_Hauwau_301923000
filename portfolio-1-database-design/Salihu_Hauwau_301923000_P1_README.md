@@ -40,7 +40,7 @@ The database used would be supporting the hotel's reservation system, from takin
 
 \- Bookings and the rooms attached to each booking.
 
-\- Invoices and payments made.
+\- Payments made.
 
 \- Check-in and check-out records of guests.
 
