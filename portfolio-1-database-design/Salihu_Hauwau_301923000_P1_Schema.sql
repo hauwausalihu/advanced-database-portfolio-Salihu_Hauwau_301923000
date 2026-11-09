@@ -16,3 +16,11 @@ CREATE TABLE room_type (
     base_rate     NUMERIC(10,2) NOT NULL CHECK (base_rate > 0),
     capacity      INT           NOT NULL CHECK (capacity > 0)
 );
+
+CREATE TABLE room (
+    room_id       INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    room_number   VARCHAR(10) NOT NULL UNIQUE,
+    status        VARCHAR(20) NOT NULL DEFAULT 'Available'
+                  CHECK (status IN ('Available','Occupied','Cleaning','Maintenance')),
+    room_type_id  INT NOT NULL REFERENCES room_type(room_type_id) ON DELETE RESTRICT
+);
