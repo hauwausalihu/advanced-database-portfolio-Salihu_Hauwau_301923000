@@ -47,3 +47,11 @@ CREATE TABLE booking_room (
                                OR (actual_check_in IS NOT NULL
                                    AND actual_check_out > actual_check_in))
 );
+
+CREATE TABLE payment (
+    payment_id  INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    amount      NUMERIC(12,2) NOT NULL CHECK (amount > 0),
+    method      VARCHAR(20)   NOT NULL CHECK (method IN ('Cash','Card','Transfer','POS')),
+    paid_at     TIMESTAMP     NOT NULL DEFAULT NOW(),
+    booking_id  INT NOT NULL REFERENCES booking(booking_id) ON DELETE RESTRICT
+);
