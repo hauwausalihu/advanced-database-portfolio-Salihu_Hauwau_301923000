@@ -9,3 +9,10 @@
        phone      VARCHAR(20)  NOT NULL,
        email      VARCHAR(120) UNIQUE
    );
+
+CREATE TABLE room_type (
+    room_type_id  INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name          VARCHAR(50)   NOT NULL UNIQUE,
+    base_rate     NUMERIC(10,2) NOT NULL CHECK (base_rate > 0),
+    capacity      INT           NOT NULL CHECK (capacity > 0)
+);
