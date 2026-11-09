@@ -35,3 +35,15 @@ CREATE TABLE booking (
     guest_id        INT NOT NULL REFERENCES guest(guest_id) ON DELETE RESTRICT,
     CONSTRAINT chk_dates CHECK (check_out_date > check_in_date)
 );
+
+CREATE TABLE booking_room (
+    booking_id        INT NOT NULL REFERENCES booking(booking_id) ON DELETE CASCADE,
+    room_id           INT NOT NULL REFERENCES room(room_id) ON DELETE RESTRICT,
+    rate_applied      NUMERIC(10,2) NOT NULL CHECK (rate_applied > 0),
+    actual_check_in   TIMESTAMP,
+    actual_check_out  TIMESTAMP,
+    PRIMARY KEY (booking_id, room_id),
+    CONSTRAINT chk_stay CHECK (actual_check_out IS NULL
+                               OR (actual_check_in IS NOT NULL
+                                   AND actual_check_out > actual_check_in))
+);
