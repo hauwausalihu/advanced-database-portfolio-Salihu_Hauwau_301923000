@@ -24,3 +24,14 @@ CREATE TABLE room (
                   CHECK (status IN ('Available','Occupied','Cleaning','Maintenance')),
     room_type_id  INT NOT NULL REFERENCES room_type(room_type_id) ON DELETE RESTRICT
 );
+
+CREATE TABLE booking (
+    booking_id      INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    check_in_date   DATE NOT NULL,
+    check_out_date  DATE NOT NULL,
+    status          VARCHAR(20) NOT NULL DEFAULT 'Pending'
+                    CHECK (status IN ('Pending','Confirmed','Checked-in','Checked-out','Cancelled')),
+    created_at      TIMESTAMP NOT NULL DEFAULT NOW(),
+    guest_id        INT NOT NULL REFERENCES guest(guest_id) ON DELETE RESTRICT,
+    CONSTRAINT chk_dates CHECK (check_out_date > check_in_date)
+);
