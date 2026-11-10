@@ -2,25 +2,25 @@
 
 
 
-\# Portfolio 1: Database Design and Modelling
+Portfolio 1: Database Design and Modelling
 
 
 
-\## Selected Case Study (Hotel Reservation System)
+&#x20;Selected Case Study (Hotel Reservation System)
 
 
 
-\*\*Organisation:\*\* Haske Hotel Reservation System, Minna
+Organisation: Haske Hotel Reservation System, Minna
 
 
 
-\*\*Scenario:\*\* Haske Hotel is a hotel located in Minna, Niger State, Nigeria. It is an 83-room hotel.
+About: Haske Hotel is a hotel located in Minna, Niger State, Nigeria. It is an 83-room hotel.
 
 The database used would be supporting the hotel's reservation system, from taking room books to guest checking out of their booked rooms. Payments would also be recorded.
 
 
 
-\*\*Users of the database:\*\*
+Database Users:
 
 \- Reservation and front-desk staff, who create and manage bookings for guests.
 
@@ -32,7 +32,9 @@ The database used would be supporting the hotel's reservation system, from takin
 
 
 
-\*\*Major data stored:\*\*
+Major data stored:
+
+
 
 \-Guests, their contact and identification details
 
@@ -46,7 +48,7 @@ The database used would be supporting the hotel's reservation system, from takin
 
 
 
-\*\*Key operations supported:\*\*
+Key operations supported:
 
 \- Reserve a room for given dates.
 
@@ -74,17 +76,35 @@ Tools and Workflow
 
 &#x20; to this GitHub repository (git push).
 
-\- Database: PostgreSQL.
+\- Database: PostgreSQL 18(psql/SQL shell.
 
 
+
+Implementation
+
+
+
+&#x20;Firstly I created the database and titled it haske hotel in my PostgreSQL. It contains six tables which are the Guest, Booking, Booking room, Payments and Room type. Each table was given a primary key and foreign key where necessary. I loaded simulated data and tested them.
+
+
+
+
+
+Test Results
+
+
+
+Five statements were tested and rejected, a repeated email address of a guest, A booking with check out before check in, A booking for a guest that doesn't exist, Booking the same room twice for one booking and then tried to delete a booking attached to a payment
+
+
+
+The final counts are 4 guests, 3 room types, 5 rooms, 4 bookings, 5 booking
+
+rooms and 3 payments. The failed statements added or removed no rows.  
 
 
 
 \*\*Note on data:\*\* All data used in this portfolio is simulated for
 
 academic purposes. It is not taken from the real Haske Hotel, Minna Niger State.
-
-
-
-
 
