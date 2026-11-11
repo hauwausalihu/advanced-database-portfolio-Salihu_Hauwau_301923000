@@ -55,3 +55,33 @@ ROLLBACK;
 
 -- Step 6 [either window]: proof that there is only one booking for room 202
 SELECT r.room_number, b.booking_id, g.full_name, b.check_in_date, b.check_out_date FROM booking_room br JOIN booking b ON b.booking_id = br.booking_id JOIN room r ON r.room_id = br.room_id JOIN guest g ON g.guest_id = b.guest_id WHERE r.room_number = '202' ORDER BY b.booking_id;
+
+-- =====================================================================
+-- PART C: ISOLATION LEVELS (Room 301 starts as Available)
+-- =====================================================================
+
+-- C1 [Window A]: READ COMMITTED (the default)
+SHOW transaction_isolation;
+BEGIN;
+SELECT room_number, status FROM room WHERE room_number = '301';
+-- C1 [Window B]: change and save
+UPDATE room SET status = 'Maintenance' WHERE room_number = '301';
+-- C1 [Window A]: the same question gives a different answer (non-repeatable read)
+SELECT room_number, status FROM room WHERE room_number = '301';
+COMMIT;
+-- reset [Window B]
+UPDATE room SET status = 'Available' WHERE room_number = '301';
+
+-- C2 [Window A]: REPEATABLE READ
+BEGIN ISOLATION LEVEL REPEATABLE READ;
+SELECT room_number, status FROM room WHERE room_number = '301';
+-- C2 [Window B]: change and save
+UPDATE room SET status = 'Maintenance' WHERE room_number = '301';
+-- C2 [Window A]: the same question gives the SAME answer (Available)
+SELECT room_number, status FROM room WHERE room_number = '301';
+-- C2 [Window A]: updating a row that changed since the snapshot is refused
+UPDATE room SET status = 'Occupied' WHERE room_number = '301';
+ROLLBACK;
+SELECT room_number, status FROM room WHERE room_number = '301';
+-- reset [either window]
+UPDATE room SET status = 'Available' WHERE room_number = '301';
